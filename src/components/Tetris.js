@@ -17,8 +17,8 @@ function Tetris() {
         'blue',
         'red',
         'yellow',
-        'pink',
-        'violet'
+        'purple',
+        'cyan'
     ]
 
     // The Tetrominoes
@@ -84,6 +84,7 @@ function Tetris() {
     function draw() {
         current.forEach(index => {
             squares[currentPosition + index].classList.add('tetromino')
+            squares[currentPosition + index].style.backgroundColor = colors[random]
         })
     }
 
@@ -92,6 +93,7 @@ function Tetris() {
     function undraw() {
         current.forEach(index => {
             squares[currentPosition + index].classList.remove('tetromino')
+            squares[currentPosition + index].style.backgroundColor = ''
         })
     }
 
@@ -189,7 +191,7 @@ function Tetris() {
     
     const displaySquares = document.querySelectorAll('.mini-grid div')
     const displayWidth = 4
-    let displayIndex = 0
+    const displayIndex = 0
     
 
     // tetromino without rotations
@@ -207,9 +209,11 @@ function Tetris() {
     function displayShape() {
         displaySquares.forEach(square => {
             square.classList.remove('tetromino')
+            square.style.backgroundColor = ''
         })
         upNextTetrominoes[nextRandom].forEach(index => {
             displaySquares[displayIndex + index].classList.add('tetromino')
+            displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
         })
     }
 
